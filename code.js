@@ -30,3 +30,9 @@ function insertAfter(referenceNode, newNode) { // this inserts DOM element after
          accountID
      } : null
  );
+
+///// remove item from array by index
+var index = array.indexOf(item);
+if (index > -1) {
+  array.splice(index, 1);
+}
