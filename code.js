@@ -69,3 +69,16 @@ function getUrlParameter(sParam) {
    }
 }
 
+const arrayToCSV = (arr, delimiter = ',') =>
+  arr.map(v => v.map(x => `"${x}"`).join(delimiter)).join('\n');
+
+const JSONtoCSV = (arr, columns, delimiter = ',') =>
+  [
+    columns.join(delimiter),
+    ...arr.map(obj =>
+      columns.reduce(
+        (acc, key) => `${acc}${!acc.length ? '' : delimiter}"${!obj[key] ? '' : obj[key]}"`,
+        ''
+      )
+    )
+  ].join('\n');
